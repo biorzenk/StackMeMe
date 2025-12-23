@@ -9,5 +9,6 @@ public class Menu_UIPlay : MonoBehaviour
     public void OnClickPlay()
     {
         manager.OnClickPanelLevel();
+
     }
 }
