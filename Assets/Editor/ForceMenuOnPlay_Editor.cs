@@ -1,4 +1,4 @@
-﻿using UnityEditor;
+﻿/* using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
@@ -47,4 +47,4 @@ public static class ForceMenuOnPlay_Editor
         Menu.SetChecked("Tools/Start From Menu", ForceMenu);
         return true;
     }
-}
+}      */

@@ -4,18 +4,14 @@ using UnityEngine;
 public class Polling_Ice : MonoBehaviour
 {
     public GameObject Ice;
-    public Transform leftPoint;
-    public Transform rightPoint;
 
-    public int blocksPerRow = 6;
-    public int poolSize = 30;
-    public float spawnDelay = 1.5f;
+    [SerializeField] int poolSize = 40;
+    [SerializeField] int blocksPerRow = 6;
+    [SerializeField] float spawnY = 1.66f;
 
     Queue<GameObject> pool = new Queue<GameObject>();
-
-    float blockW;
-    float timer;
-    bool spawnFromLeft = true;
+    bool spawnLeft = true;
+    float blockWidth;
 
     void Awake()
     {
@@ -25,57 +21,54 @@ public class Polling_Ice : MonoBehaviour
             ice.SetActive(false);
             pool.Enqueue(ice);
         }
+
+        blockWidth = Ice.GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
     void Start()
     {
-        SpriteRenderer sr =
-            pool.Peek().GetComponentInChildren<SpriteRenderer>();
-        blockW = sr.bounds.size.x;
+        InvokeRepeating(nameof(Spawn), 1f, 1.5f);
     }
 
-    void Update()
+    void Spawn()
     {
-        timer += Time.deltaTime;
-        if (timer >= spawnDelay)
+        float spawnX;
+        int dir;
+
+        if (spawnLeft)
         {
-            SpawnRow();
-            spawnFromLeft = !spawnFromLeft; // đổi bên
-            timer = 0f;
+            spawnX = -20f;
+            dir = 1;
         }
-    }
+        else
+        {
+            spawnX = 24.7f;
+            dir = -1;
+        }
 
-    void SpawnRow()
-    {
-        Vector2 dir = spawnFromLeft ? Vector2.right : Vector2.left;
-        Vector3 startPos = spawnFromLeft
-            ? leftPoint.position
-            : rightPoint.position;
-
-        GameObject last = null;
+        float x = spawnX;
 
         for (int i = 0; i < blocksPerRow; i++)
         {
-            GameObject ice = GetIce();
-            ice.SetActive(true);
+            if (pool.Count == 0) break;
 
-            Ice_Manager move = ice.GetComponent<Ice_Manager>();
-            if (move != null) move.dir = dir;
+            GameObject block = pool.Dequeue();
+            block.transform.position = new Vector2(x, spawnY);
+            block.SetActive(true);
 
-            if (i == 0)
-                ice.transform.position = startPos;
-            else
-                ice.transform.position =
-                    last.transform.position + (Vector3)(dir * blockW);
+            Ice_Manager ice = block.GetComponent<Ice_Manager>();
+            ice.ResetState();
+            ice.SetDirection(dir);
 
-            last = ice;
+            x += blockWidth * dir; 
         }
+
+        spawnLeft = !spawnLeft;
     }
 
-    GameObject GetIce()
+    public void ReturnBlock(GameObject block)
     {
-        GameObject ice = pool.Dequeue();
-        pool.Enqueue(ice);
-        return ice;
+        block.SetActive(false);
+        pool.Enqueue(block);
     }
 }

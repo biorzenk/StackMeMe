@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Trap
+  - Audio_Menu
+  - Limit
   layers:
   - Default
   - TransparentFX
