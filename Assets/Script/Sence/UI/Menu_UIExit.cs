@@ -8,6 +8,13 @@ public class Menu_UIExit : MonoBehaviour
 
     public void ClickExit()
     {
+        StartCoroutine(DelayExit());
+    }
+
+    IEnumerator DelayExit()
+    {
+        yield return new WaitForSeconds(0.2f);
         manager.OnClickExit();
     }
 }
+

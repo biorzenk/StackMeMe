@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
@@ -22,24 +23,26 @@ public class Player_Movement : MonoBehaviour
         _animator = GetComponent<Animator>();          
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         previousGrounded = _isGrounded;
 
-        _isGrounded = Physics2D.OverlapCircle(Ground_check.position, 2.5f, Ground_layer);
-
-        Debug.Log("Is Grounded: " + _isGrounded);
+        _isGrounded = Physics2D.OverlapCircle(Ground_check.position, 2f, Ground_layer);
+        Debug.Log(_isGrounded);
 
         if (_isGrounded && !previousGrounded)
         {
             justLanded = true;
         }
+    }
 
+
+    private void Update()
+    {
         CharacterJump();
         CheckFall();
         CheckLanding();
     }
-
     void CharacterJump()
     {
         if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
@@ -52,7 +55,7 @@ public class Player_Movement : MonoBehaviour
 
     void CheckFall()
     {
-        if (!_isGrounded && rb.velocity.y < 0)
+        if (!_isGrounded && rb.velocity.y < -0.1f)
         {
             _animator.SetBool("isFalling", true);
         }
@@ -75,5 +78,6 @@ public class Player_Movement : MonoBehaviour
     public void Deaded()
     {
         _animator.SetBool("isDead", true);
+        Destroy(this.gameObject, 1f);
     }
 }

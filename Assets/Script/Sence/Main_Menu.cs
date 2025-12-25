@@ -8,6 +8,7 @@ public class Main_Menu : MonoBehaviour
 {
     public void PlayMap1()
     {
+        Invoke("DelaySetting", 1f);
         SceneManager.LoadSceneAsync("Map_1");
     }
 }
