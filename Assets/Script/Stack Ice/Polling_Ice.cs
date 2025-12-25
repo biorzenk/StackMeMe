@@ -6,12 +6,15 @@ public class Polling_Ice : MonoBehaviour
     public GameObject Ice;
 
     [SerializeField] int poolSize = 40;
-    [SerializeField] int blocksPerRow = 6;
+    [SerializeField] int blocksPerRow = 20;
     [SerializeField] float spawnY = 1.66f;
 
     Queue<GameObject> pool = new Queue<GameObject>();
     bool spawnLeft = true;
+
+
     float blockWidth;
+    float blockHeight;
 
     void Awake()
     {
@@ -23,6 +26,7 @@ public class Polling_Ice : MonoBehaviour
         }
 
         blockWidth = Ice.GetComponent<SpriteRenderer>().bounds.size.x;
+        blockHeight = Ice.GetComponent<SpriteRenderer>().bounds.size.y;
     }
 
     void Start()
@@ -37,12 +41,12 @@ public class Polling_Ice : MonoBehaviour
 
         if (spawnLeft)
         {
-            spawnX = -20f;
+            spawnX = -65f;
             dir = 1;
         }
         else
         {
-            spawnX = 24.7f;
+            spawnX = 70f;
             dir = -1;
         }
 
@@ -63,6 +67,13 @@ public class Polling_Ice : MonoBehaviour
             x += blockWidth * dir; 
         }
 
+        if (spawnLeft)
+        {
+              spawnY += blockHeight;
+        }else
+        {
+            spawnY += blockHeight;
+        }
         spawnLeft = !spawnLeft;
     }
 
