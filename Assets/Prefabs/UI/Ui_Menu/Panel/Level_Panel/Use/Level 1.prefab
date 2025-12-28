@@ -255,7 +255,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6813856962893293042, guid: 16229222434a28c44b8b6721a7f7e000, type: 3}
         m_TargetAssemblyTypeName: Level, Assembly-CSharp
         m_MethodName: OpenLevel
         m_Mode: 3
