@@ -8,11 +8,11 @@ public class Level : MonoBehaviour
 {
     public Button[] buttons;
 
-    public UI_Manager uI_Manager;
 
      private void Awake()
     {
         int UnlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 1);
+
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].interactable = false;
@@ -25,8 +25,8 @@ public class Level : MonoBehaviour
     }     
     public void OpenLevel(int Level_id)
     {
-        string levelName = "level" + Level_id;
-        SceneManager.LoadScene(levelName);
+        SceneType scene = (SceneType)Level_id;
+        SceneLoaded.Instance.Load(scene);
     }
 
 

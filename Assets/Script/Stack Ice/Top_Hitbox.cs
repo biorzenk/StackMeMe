@@ -6,14 +6,21 @@ public class Top_Hitbox : MonoBehaviour
 
     private void Awake()
     {
-        ice = GetComponentInParent<Ice_Manager>();
+        ice = transform.parent.GetComponent<Ice_Manager>();
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!col.gameObject.CompareTag("Player")) return;
+        if (!collision.gameObject.CompareTag("Player")) return;
 
-        Debug.Log("Dung tren bang");
-        ice.StopBlock();
+        foreach (var contact in collision.contacts)
+        {
+            if (contact.normal.y < -0.5f)
+            {
+                Debug.Log("Dung tren bang");
+                ice.StopBlock();
+                return;
+            }
+        }
     }
 }

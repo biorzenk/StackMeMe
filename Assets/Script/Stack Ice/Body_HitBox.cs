@@ -1,20 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Body_HitBox : MonoBehaviour
 {
-
-
-    void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!col.gameObject.CompareTag("Player")) return;
+        if (!other.CompareTag("Player")) return;
 
-        Debug.Log("Cham than - chet");
+        Rigidbody2D rb = other.attachedRigidbody;
+        if (rb == null) return;
 
-        col.gameObject
-           .GetComponent<Player_Movement>()
-           .Deaded();
+        // Nếu player đang rơi hoặc đứng yên → KHÔNG chết
+        if (rb.velocity.y <= 0f)
+            return;
+
+        // Nếu đang nhảy lên từ dưới → KHÔNG chết
+        if (rb.velocity.y > 0.1f)
+            return;
+
+        Debug.Log("Cham than bang - chet");
+        other.GetComponentInParent<Player_Movement>()?.Deaded();
     }
 }
