@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ice: {fileID: 3844324611115417822}
-  poolSize: 150
+  poolSize: 180
   blocksPerRow: 20
   spawnY: 3
 --- !u!1001 &8535191100531333428

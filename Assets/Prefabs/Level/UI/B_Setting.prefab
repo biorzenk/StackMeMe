@@ -193,7 +193,7 @@ PrefabInstance:
     - target: {fileID: 7442065645452688756, guid: a6f346635e63e864b864c5a1eb7799db, type: 3}
       propertyPath: manager
       value: 
-      objectReference: {fileID: 2968510478940290886, guid: 84784ece40c7f0f4799eaabe4806e803, type: 3}
+      objectReference: {fileID: 6753931567468386270, guid: a6f76af55f178ee4f8fa0b8693006546, type: 3}
     - target: {fileID: 7652688800971723723, guid: a6f346635e63e864b864c5a1eb7799db, type: 3}
       propertyPath: m_Name
       value: BLv_Setting
