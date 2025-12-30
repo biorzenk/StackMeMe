@@ -11,7 +11,7 @@ public class Ice_Manager : MonoBehaviour
     float stopTimer = 0f;
 
     Rigidbody2D rb;
-    bool stopped = false;
+    public bool stopped = false;
 
     void Awake()
     {

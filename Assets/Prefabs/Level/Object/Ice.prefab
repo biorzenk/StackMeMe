@@ -103,6 +103,7 @@ MonoBehaviour:
   pool: {fileID: 0}
   speed: 30
   stopDuration: 3
+  stopped: 0
 --- !u!50 &1553979271106484599
 Rigidbody2D:
   serializedVersion: 4
@@ -138,6 +139,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 644961387993392746}
     m_Modifications:
+    - target: {fileID: 3034389092111688956, guid: fa639f11291c5bc43a620178bd80d5ec, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0064592
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034389092111688956, guid: fa639f11291c5bc43a620178bd80d5ec, type: 3}
+      propertyPath: m_Size.y
+      value: 0.019378662
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034389092111688956, guid: fa639f11291c5bc43a620178bd80d5ec, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0010633469
+      objectReference: {fileID: 0}
+    - target: {fileID: 3034389092111688956, guid: fa639f11291c5bc43a620178bd80d5ec, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.49029386
+      objectReference: {fileID: 0}
     - target: {fileID: 7596633203197381650, guid: fa639f11291c5bc43a620178bd80d5ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -243,6 +260,14 @@ PrefabInstance:
     - target: {fileID: 5766076376315461305, guid: 563ad2c8783339743a7578fbbec29fb0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744031923439848078, guid: 563ad2c8783339743a7578fbbec29fb0, type: 3}
+      propertyPath: m_Size.y
+      value: 0.92545295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744031923439848078, guid: 563ad2c8783339743a7578fbbec29fb0, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.037273526
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

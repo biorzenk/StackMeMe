@@ -8,6 +8,8 @@ TagManager:
   - Trap
   - Audio_Menu
   - Limit
+  - Audio
+  - CheckIce
   layers:
   - Default
   - TransparentFX
